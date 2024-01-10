@@ -29,13 +29,9 @@ FatWest Bank Application is a sophisticated, console-based banking system implem
 
 #### Setup
 
-1. Clone the repository:
+Clone the repository:
    ```
-   git clone https://github.com/k-sheikh/personal-projects/tree/main/Banking%20Environment
-   ```
-2. Navigate to the project directory:
-   ```
-   cd Banking Environment
+   git clone https://github.com/k-sheikh/fatwest-bank
    ```
 
 ### Usage
