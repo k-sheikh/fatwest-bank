@@ -33,7 +33,7 @@ def main_menu(bank):
 : """, ['1', '2', '3'])
     
     if user_input == '1':
-        login()
+        login(bank)
     elif user_input == '2':
         register_new_user(bank)
     elif user_input == '3':
@@ -93,16 +93,19 @@ def validate_password(password):
             re.search("[0-9]", password))
 
 
-# Login
-def login():
-    bank = Bank()
+def login(bank):
     user_id = input("Please enter your user ID: ")
-    password = input("Enter your password: ")
-    if bank.login_user(user_id, password):
-        print("PLACEHOLDER SUCCESS MESSAGE")
-        # Create login operations
+
+    if bank.user_exists(user_id):
+        password = input("Please enter your password: ")
+        if bank.login_user(user_id, password):
+            # Add login operations here
+            return True
+        else:
+            return False
     else:
-        print("PLACEHOLDER FAILURE MESSAGE")
+        print("User ID does not exist.")
+        return False
 
 
 # -----MAIN PROGRAM-----
