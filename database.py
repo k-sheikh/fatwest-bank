@@ -1,5 +1,6 @@
 import sqlite3
 
+
 def create_connection():
     """Create a database connection to a SQLite database."""
     conn = None
@@ -8,6 +9,7 @@ def create_connection():
     except Exception as e:
         print(e)
     return conn
+
 
 def initialise_database():
     sql_create_users_table = """CREATE TABLE IF NOT EXISTS users (
@@ -35,6 +37,19 @@ def initialise_database():
             print(e)
         finally:
             conn.close()
+
+
+# Verify login password
+def get_password_by_user_id(conn, user_id):
+    try:
+        cursor = conn.cursor()
+        cursor.execute("SELECT password FROM users WHERE user_id = ?", (user_id,))
+        result = cursor.fetchone()
+        return result[0] if result else None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+
 
 if __name__ == "__main__":
     initialise_database()
