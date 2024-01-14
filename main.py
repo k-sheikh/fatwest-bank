@@ -51,7 +51,8 @@ def register_new_user(bank):
         user_id = new_user.user_id
 
         print(f"""\nCongratulations {forename}, your account has been created successfully.
-Your user id is {user_id}. Please keep this information safe.""")
+Your user id is {user_id}. Please keep this information safe.
+You can now login with your credentials to open an account.""")
     except Exception as e:
         print(f"An error occurred during registration: {e}")
 
