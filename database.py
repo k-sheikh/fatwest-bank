@@ -12,7 +12,7 @@ def create_connection():
 def initialise_database():
     sql_create_users_table = """CREATE TABLE IF NOT EXISTS users (
                                     user_id TEXT PRIMARY KEY,
-                                    forname TEXT NOT NULL,
+                                    forename TEXT NOT NULL,
                                     surname TEXT NOT NULL,
                                     password TEXT NOT NULL
                                     )"""
