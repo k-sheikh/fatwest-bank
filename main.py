@@ -97,7 +97,7 @@ def login(bank):
     user_id = input("\nPlease enter your user ID: ")
 
     if bank.user_exists(user_id):
-        password = input("Please enter your password: ")
+        password = stdiomask.getpass("Please enter your password: ", mask="*")
         if bank.login_user(user_id, password):
             # Add login operations here
             return True
