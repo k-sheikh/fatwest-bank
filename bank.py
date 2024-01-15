@@ -38,10 +38,10 @@ class Bank:
     def login_user(self, user_id, password):
          stored_password = get_password_by_user_id(self.conn, user_id)
          if stored_password == password:
-              print("Login successful.")
+              print("\nLogin successful.")
               return True
          else:
-              print("Incorrect password. Please try again.")
+              print("\nIncorrect password. Please try again.")
               return False
 
     def user_exists(self, user_id):
