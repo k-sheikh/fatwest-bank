@@ -94,7 +94,7 @@ def validate_password(password):
 
 
 def login(bank):
-    user_id = input("Please enter your user ID: ")
+    user_id = input("\nPlease enter your user ID: ")
 
     if bank.user_exists(user_id):
         password = input("Please enter your password: ")
@@ -104,7 +104,7 @@ def login(bank):
         else:
             return False
     else:
-        print("User ID does not exist.")
+        print("\nInvalid input. User ID does not exist.")
         return False
 
 
