@@ -7,6 +7,7 @@ class Account:
         account_type (str): The type of account (e.g., savings, checking).
         balance (float): The current balance of the account.
     """
+    
     def __init__(self, account_number, account_type, balance = 0):
         """
         Initializes a new Account instance.
