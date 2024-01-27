@@ -6,6 +6,7 @@ from bank import Bank
 from sys import exit
 import re
 import stdiomask
+from database import initialise_database
 
 
 # -----FUNCTIONS-----
@@ -162,9 +163,13 @@ def login(bank):
 # -----MAIN PROGRAM-----
 
 if __name__ == "__main__":
-    from database import initialise_database
-    initialise_database()  # Initialise database on program start
+    # Initialise the database required for the banking application.
+    initialise_database()
+
+    # Create an instance of the Bank class to manage banking operations.
     fatWestBank = Bank()
+
+    # Enter the main loop of the program: display welcome message and show the main menu.
     while True:
         welcome()
         main_menu(fatWestBank)
