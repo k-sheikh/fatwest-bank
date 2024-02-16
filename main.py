@@ -7,6 +7,7 @@ from sys import exit
 import re
 import stdiomask
 from database import initialise_database
+from database import get_forename_by_user_id
 
 
 # -----FUNCTIONS-----
@@ -152,12 +153,40 @@ def login(bank):
         password = stdiomask.getpass("Please enter your password: ", mask="*")
         if bank.login_user(user_id, password):
             # Add login operations here
+            user_forename = get_forename_by_user_id(bank.conn, user_id)
+            if user_forename:
+                user_menu(user_forename, user_id)
+            else:
+                print("User forename could not be retrieved.")
             return True
         else:
             return False
     else:
         print("\nInvalid input. User ID does not exist.")
         return False
+
+
+def user_menu(user_forename, user_id):
+    print(f"\nWelcome {user_forename}, please select from one of the following options:")
+    print("1 - Check active accounts")
+    print("2 - Close an account")
+    print("3 - Open a new account")
+    print("4 - Log out")
+    choice = input("Enter your choice: ")
+    if choice == '1':
+        # Add functionality to check active accounts
+        pass
+    elif choice == '2':
+        # Add functionality to close an account
+        pass
+    elif choice == '3':
+        # Add functionality to open a new account
+        pass
+    elif choice == '4':
+        return  # This will log the user out and return to the main menu
+    else:
+        print("\nInvalid option. Please try again.")
+        user_menu(user_forename, user_id)  # Recursively call user_menu to handle invalid input
 
 
 # -----MAIN PROGRAM-----
