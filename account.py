@@ -65,13 +65,13 @@ class CurrentAccount(Account):
         self.account_type = 'Current Account'
         self.overdraft_limit = -1000  # Overdraft facility
 
-        def withdraw(self, amount):
-            if self.balance - amount < self.overdraft_limit:
-                print("Withdrawal denied. Exceeds overdraft limit.")
-            else:
-                super().withdraw(amount)
-                print(f"Withdrawn £{amount}.")
-                print(f"Current balance is £{self.balance}.")
+    def withdraw(self, amount):
+        if self.balance - amount < self.overdraft_limit:
+            print("Withdrawal denied. Exceeds overdraft limit.")
+        else:
+            super().withdraw(amount)
+            print(f"Withdrawn £{amount}.")
+            print(f"Current balance is £{self.balance}.")
 
 
 class SavingsAccount(Account):
