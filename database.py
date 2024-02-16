@@ -73,14 +73,40 @@ def get_password_by_user_id(conn, user_id):
         Exception: If any database operation error occurs, it is caught and printed, and None is returned.
     """
     try:
-        cursor = conn.cursor()
-        cursor.execute("SELECT password FROM users WHERE user_id = ?", (user_id,))
-        result = cursor.fetchone()
+        c = conn.cursor()
+        c.execute("SELECT password FROM users WHERE user_id = ?", (user_id,))
+        result = c.fetchone()
         return result[0] if result else None
     except Exception as e:
         print(f"An error occurred: {e}")
         return None
 
+
+# Verify login password
+def get_forename_by_user_id(conn, user_id):
+    """
+    Retrieves the forename for a given user ID from the database.
+
+    This function queries the 'users' table in the database to find the forename associated with the specified user ID. It returns the forename if found, or None if the user ID does not exist or an error occurs.
+
+    Parameters:
+        user_id (str): The user ID for which to retrieve the password.
+
+    Returns:
+        str or None: The password associated with the user ID if found, otherwise None.
+
+    Raises:
+        Exception: If any database operation error occurs, it is caught and printed, and None is returned.
+    """
+    try:
+        c = conn.cursor()
+        c.execute("SELECT forename FROM users WHERE user_id = ?", (user_id,))
+        result = c.fetchone()
+        return result[0]
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+    
 
 # Initialize the database by creating necessary tables when this script is run directly.
 if __name__ == "__main__":
