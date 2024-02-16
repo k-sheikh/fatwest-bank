@@ -167,12 +167,15 @@ def login(bank):
 
 
 def user_menu(user_forename, user_id):
-    print(f"\nWelcome {user_forename}, please select from one of the following options:")
-    print("1 - Check active accounts")
-    print("2 - Close an account")
-    print("3 - Open a new account")
-    print("4 - Log out")
-    choice = input("Enter your choice: ")
+    choice = get_validated_input(f"""\nWelcome back {user_forename}!
+
+Please select from one of the following options
+1 - Check active accounts
+2 - Close an account
+3 - Open a new account
+4 - Log out
+: """, ['1', '2', '3', '4'])
+    
     if choice == '1':
         # Add functionality to check active accounts
         pass
@@ -183,6 +186,7 @@ def user_menu(user_forename, user_id):
         # Add functionality to open a new account
         pass
     elif choice == '4':
+        print(f"\nYou have been logged out successfully. Goodbye {user_forename}!")
         return  # This will log the user out and return to the main menu
     else:
         print("\nInvalid option. Please try again.")
