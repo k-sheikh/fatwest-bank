@@ -52,3 +52,40 @@ class Account:
             return self.balance
         else:
             raise ValueError("Insufficient funds")
+
+
+class CurrentAccount(Account):
+    """
+    Represents a Current Account with an overdraft facility.
+
+    Inherits from Account and allows for an overdraft up to a specified limit.
+    """
+    def __init__(self, account_number, account_type, balance=0):
+        super().__init__(account_number, account_type, balance)
+        self.account_type = 'Current Account'
+        self.overdraft_limit = -1000  # Overdraft facility
+
+        def withdraw(self, amount):
+            if self.balance - amount < self.overdraft_limit:
+                print("Withdrawal denied. Exceeds overdraft limit.")
+            else:
+                super().withdraw(amount)
+                print(f"Withdrawn £{amount}.")
+                print(f"Current balance is £{self.balance}.")
+
+
+class SavingsAccount(Account):
+    """
+    Represents a Savings Account that earns interest on deposits.
+
+    Inherits from Account and adds interest to deposits.
+    """
+    def __init__(self, account_number, account_type, balance=0):
+        super().__init__(account_number, account_type, balance)
+        self.account_type = 'Savings Account'
+
+        def deposit(self, amount):
+            interest = amount * 0.05
+            super().deposit(amount + interest)
+            print(f"Deposited £{amount} with interest £{interest}.")
+            print(f"Current balance is £{self.balance}.")
