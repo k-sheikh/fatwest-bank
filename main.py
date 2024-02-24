@@ -167,30 +167,44 @@ def login(bank):
 
 
 def user_menu(user_forename, user_id):
-    choice = get_validated_input(f"""\nWelcome back {user_forename}!
+    while True:  # Keep showing the user menu until the user decides to log out
+        choice = get_validated_input(f"""\nWelcome back {user_forename}!
 
 Please select from one of the following options
 1 - Check active accounts
-2 - Close an account
-3 - Open a new account
-4 - Log out
-: """, ['1', '2', '3', '4'])
+2 - Open a new account
+3 - Log out
+: """, ['1', '2', '3'])
     
+        if choice == '1':
+            # Add functionality to check active accounts
+            pass
+        elif choice == '2':
+            # Add functionality to open a new account
+            open_new_account(user_forename, user_id)
+            pass
+        elif choice == '3':
+            print(f"\nYou have been logged out successfully. Goodbye {user_forename}!")
+            return  # Exit the loop and return to the main menu
+
+
+def open_new_account(user_forename, user_id):
+    choice = get_validated_input(f"""\nWhat type of account would you like to open?
+                                    
+1 - Current Account
+2 - Savings Account
+3 - Go back
+: """, ['1', '2', '3'])
+        
     if choice == '1':
-        # Add functionality to check active accounts
+        # Add functionality to open a current account
         pass
     elif choice == '2':
-        # Add functionality to close an account
+        # Add functionality to open a savings account
         pass
     elif choice == '3':
-        # Add functionality to open a new account
-        pass
-    elif choice == '4':
-        print(f"\nYou have been logged out successfully. Goodbye {user_forename}!")
-        return  # This will log the user out and return to the main menu
-    else:
-        print("\nInvalid option. Please try again.")
-        user_menu(user_forename, user_id)  # Recursively call user_menu to handle invalid input
+        # This will take the user back to the user menu
+        return True
 
 
 # -----MAIN PROGRAM-----
