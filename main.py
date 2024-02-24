@@ -32,7 +32,7 @@ def get_validated_input(prompt, valid_options):
     """
     user_input = input(prompt)
     while user_input not in valid_options:
-        print("\nInput is not valid.")
+        print("\nInvalid input. Please try again.")
         user_input = input(prompt)
     return user_input
 
@@ -44,7 +44,7 @@ def main_menu(bank):
     Args:
     bank (Bank): The Bank object to perform operations.
     """
-    user_input = get_validated_input("""Please select from one of the following options:
+    user_input = get_validated_input("""\nPlease select from one of the following options:
 1 - Login
 2 - Register
 3 - Exit
@@ -167,10 +167,9 @@ def login(bank):
 
 
 def user_menu(user_forename, user_id):
+    print(f"\nWelcome back {user_forename}!")
     while True:  # Keep showing the user menu until the user decides to log out
-        choice = get_validated_input(f"""\nWelcome back {user_forename}!
-
-Please select from one of the following options
+        choice = get_validated_input(f"""\nPlease select from one of the following options
 1 - Check active accounts
 2 - Open a new account
 3 - Log out
@@ -189,8 +188,7 @@ Please select from one of the following options
 
 
 def open_new_account(user_forename, user_id):
-    choice = get_validated_input(f"""\nWhat type of account would you like to open?
-                                    
+    choice = get_validated_input(f"""\nWhat type of account would you like to open?                                   
 1 - Current Account
 2 - Savings Account
 3 - Go back
